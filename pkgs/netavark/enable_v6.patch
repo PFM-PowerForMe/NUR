@@ -1,0 +1,31 @@
+diff --git a/src/network/dhcp.rs b/src/network/dhcp.rs
+index 220d7fe..120a36e 100644
+--- a/src/network/dhcp.rs
++++ b/src/network/dhcp.rs
+@@ -43,7 +43,7 @@ pub fn get_dhcp_lease(
+     container_macvlan_mac: &str,
+     container_hostname: &str,
+     container_id: &str,
+-    ipam: &IPAMAddresses,
++    _ipam: &IPAMAddresses,
+ ) -> NetavarkResult<DhcpLeaseInfo> {
+     // Create containers to hold the combined results from all leases.
+     let mut subnets: Vec<NetAddress> = Vec::new();
+@@ -75,7 +75,7 @@ pub fn get_dhcp_lease(
+     subnets.push(v4_subnet);
+ 
+     // --- Conditionally Perform DHCPv6 Lease ---
+-    if ipam.ipv6_enabled {
++    //if ipam.ipv6_enabled {
+         let nvp_config_v6 = NetworkConfig {
+             version: 1, // Explicitly set for IPv6
+             host_iface: host_network_interface.to_string(),
+@@ -100,7 +100,7 @@ pub fn get_dhcp_lease(
+         {
+             all_domain_names = v6_domain;
+         }
+-    }
++    //}
+ 
+     Ok((subnets, all_dns_servers, all_domain_names))
+ }

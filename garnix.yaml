@@ -1,0 +1,7 @@
+builds:
+  include:
+    - "packages.aarch64-linux.*"
+    - "packages.x86_64-linux.*"
+  exclude:
+    - "*.x86_64-darwin"
+    - "*.aarch64-darwin"
